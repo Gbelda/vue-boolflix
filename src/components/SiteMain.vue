@@ -2,6 +2,7 @@
   <main>
     <div class="container">
       <div class="row" v-if="!noMovie">
+        <h1 class="section">MOVIES</h1>
         <movie
           v-for="movie in movies"
           :key="movie.id"
@@ -9,6 +10,15 @@
           :original_title="movie.original_title"
           :language="movie.original_language"
           :vote_avg="movie.vote_average"
+        />
+        <h1 class="section">TV SHOWS</h1>
+        <tv-shows
+          v-for="show in shows"
+          :key="show.id"
+          :name="show.name"
+          :original_name="show.original_name"
+          :language="show.original_language"
+          :vote_avg="show.vote_average"
         />
       </div>
       <div class="no_movie" v-else>
@@ -20,14 +30,17 @@
 
 <script>
 import Movie from "./Movie.vue";
+import TvShows from "./TvShows.vue";
 export default {
   props: {
+    shows: Array,
     movies: Array,
     error: String,
     noMovie: Boolean,
   },
   components: {
     Movie,
+    TvShows,
   },
   data() {
     return {};
@@ -36,6 +49,10 @@ export default {
 </script>
 
 <style lang="scss">
+.section {
+  text-align: center;
+  padding: 5rem;
+}
 .no_movie {
   h1 {
     padding-top: 10rem;

@@ -1,7 +1,7 @@
 <template>
-  <div class="col-3 movie">
-    <h2>{{ title }}</h2>
-    <h4>{{ original_title }}</h4>
+  <div class="col-3 tv_show">
+    <h2>{{ name }}</h2>
+    <h4>{{ original_name }}</h4>
     <h4>{{ getFlagEmoji(language) }}</h4>
     <h4>vote average : {{ vote_avg }}</h4>
   </div>
@@ -15,8 +15,8 @@ export default {
     };
   },
   props: {
-    title: String,
-    original_title: String,
+    name: String,
+    original_name: String,
     language: String,
     vote_avg: Number,
   },
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
-.movie {
+.tv_show {
   padding: 2rem 0px;
 }
 </style>
