@@ -1,0 +1,30 @@
+<template>
+  <header class="d-flex align-items-center justify-content-between">
+    <div class="site_logo">
+      <h1>BOOLFLIX</h1>
+    </div>
+    <div class="search_el">
+      <input type="text" name="search" id="search_input" />
+      <button>Search</button>
+    </div>
+  </header>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss">
+header {
+  height: 100px;
+  background-color: black;
+  h1 {
+    color: red;
+    line-height: 100px;
+    padding-left: 2rem;
+  }
+  .search_el {
+    padding-right: 2rem;
+  }
+}
+</style>
