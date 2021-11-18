@@ -18,5 +18,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.movie {
+  padding-top: 2rem;
+}
 </style>

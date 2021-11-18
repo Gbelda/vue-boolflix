@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <div class="row">
+      <div class="row" v-if="!noMovie">
         <movie
           v-for="movie in movies"
           :key="movie.id"
@@ -10,6 +10,9 @@
           :language="movie.original_language"
           :vote_avg="movie.vote_average"
         />
+      </div>
+      <div class="no_movie" v-else>
+        <h1>{{ error }}</h1>
       </div>
     </div>
   </main>
@@ -20,20 +23,24 @@ import Movie from "./Movie.vue";
 export default {
   props: {
     movies: Array,
+    error: String,
+    noMovie: Boolean,
   },
   components: {
     Movie,
   },
   data() {
-    return {
-      query: "star",
-    };
+    return {};
   },
 };
 </script>
 
 <style lang="scss">
-.movie {
-  padding-top: 2rem;
+.no_movie {
+  h1 {
+    padding-top: 10rem;
+    color: red;
+    text-align: center;
+  }
 }
 </style>
