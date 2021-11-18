@@ -3,15 +3,15 @@
     <div class="site_logo">
       <h1>BOOLFLIX</h1>
     </div>
-    <div class="search_el">
-      <input type="text" name="search" id="search_input" />
-      <button>Search</button>
-    </div>
+    <search-bar />
   </header>
 </template>
 
 <script>
-export default {};
+import SearchBar from "./SearchBar.vue";
+export default {
+  components: { SearchBar },
+};
 </script>
 
 <style lang="scss">
@@ -22,9 +22,6 @@ header {
     color: red;
     line-height: 100px;
     padding-left: 2rem;
-  }
-  .search_el {
-    padding-right: 2rem;
   }
 }
 </style>

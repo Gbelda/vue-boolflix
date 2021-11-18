@@ -24,14 +24,14 @@ export default {
   },
   data() {
     return {
-      query: "",
+      query: "star",
       movies: [],
     };
   },
   mounted() {
     axios
       .get(
-        "https://api.themoviedb.org/3/search/movie?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=star"
+        `https://api.themoviedb.org/3/search/movie?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=${this.query}`
       )
       .then((response) => {
         this.movies = response.data.results;

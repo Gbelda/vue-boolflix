@@ -1,7 +1,7 @@
 <template>
   <div class="col-3 movie">
     <h1>{{ title }}</h1>
-    <h3>{{ original_title }}</h3>
+    <h4>{{ original_title }}</h4>
     <h4>{{ language }}</h4>
     <h4>vote average : {{ vote_avg }}</h4>
   </div>
