@@ -3,14 +3,26 @@
     <div class="site_logo">
       <h1>BOOLFLIX</h1>
     </div>
-    <search-bar />
+    <search-bar @search="getTitle" />
   </header>
 </template>
 
 <script>
 import SearchBar from "./SearchBar.vue";
 export default {
-  components: { SearchBar },
+  components: {
+    SearchBar,
+  },
+  data() {
+    return {
+      searchString: "",
+    };
+  },
+  methods: {
+    getTitle(text) {
+      this.searchString = text;
+    },
+  },
 };
 </script>
 
