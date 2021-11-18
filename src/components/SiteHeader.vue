@@ -17,7 +17,7 @@ export default {};
 <style lang="scss">
 header {
   height: 100px;
-  background-color: black;
+  background-color: rgb(22, 22, 22);
   h1 {
     color: red;
     line-height: 100px;
