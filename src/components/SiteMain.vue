@@ -2,19 +2,46 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-3 movie">
-          <h1>Titolo</h1>
-          <h3>Titolo Originale</h3>
-          <h4>Lingua</h4>
-          <h4>Voto</h4>
-        </div>
+        <movie
+          v-for="movie in movies"
+          :key="movie.id"
+          :title="movie.title"
+          :original_title="movie.original_title"
+          :language="movie.original_language"
+          :vote_avg="movie.vote_average"
+        />
       </div>
     </div>
   </main>
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import Movie from "./Movie.vue";
+export default {
+  components: {
+    Movie,
+  },
+  data() {
+    return {
+      query: "",
+      movies: [],
+    };
+  },
+  mounted() {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/search/movie?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=star"
+      )
+      .then((response) => {
+        this.movies = response.data.results;
+        this.loading = false;
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  },
+};
 </script>
 
 <style lang="scss">
