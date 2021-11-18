@@ -2,7 +2,8 @@
   <div class="col-3 movie">
     <h2>{{ title }}</h2>
     <h4>{{ original_title }}</h4>
-    <h4><img :src="src" /></h4>
+
+    <img :src="require(`../assets/flags/${language}.svg`)" />
     <h4>vote average : {{ vote_avg }}</h4>
   </div>
 </template>
@@ -10,9 +11,7 @@
 <script>
 export default {
   data() {
-    return {
-      src: `/src/assets/flags/${this.language.toLowerCase()}.svg`,
-    };
+    return {};
   },
   props: {
     title: String,
