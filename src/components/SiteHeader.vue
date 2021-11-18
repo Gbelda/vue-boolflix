@@ -3,25 +3,27 @@
     <div class="site_logo">
       <h1>BOOLFLIX</h1>
     </div>
-    <search-bar @search="getTitle" />
+    <div class="search_el">
+      <input
+        type="text"
+        name="search"
+        id="search_input"
+        placeholder="Movie Title"
+        v-model="searchString"
+        @keyup.enter="$emit('search', searchString)"
+      />
+      <button>Search</button>
+    </div>
   </header>
 </template>
 
 <script>
-import SearchBar from "./SearchBar.vue";
 export default {
-  components: {
-    SearchBar,
-  },
+  components: {},
   data() {
     return {
       searchString: "",
     };
-  },
-  methods: {
-    getTitle(text) {
-      this.searchString = text;
-    },
   },
 };
 </script>
@@ -34,6 +36,9 @@ header {
     color: red;
     line-height: 100px;
     padding-left: 2rem;
+  }
+  .search_el {
+    padding-right: 2rem;
   }
 }
 </style>
