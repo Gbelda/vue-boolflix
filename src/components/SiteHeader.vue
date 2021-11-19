@@ -30,8 +30,11 @@ export default {
 
 <style lang="scss">
 header {
+  position: fixed;
+  width: 100%;
   height: 100px;
   background-color: rgb(22, 22, 22);
+  z-index: 99;
   h1 {
     color: red;
     line-height: 100px;

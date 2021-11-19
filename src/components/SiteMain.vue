@@ -56,6 +56,7 @@ export default {
 <style lang="scss">
 main {
   background-color: rgb(44, 44, 44);
+  padding-top: 50px;
   .section {
     text-align: center;
     padding: 5rem;
