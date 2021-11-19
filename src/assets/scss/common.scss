@@ -4,6 +4,28 @@
     box-sizing: border-box;
 }
 
+main{
+    max-width: 1920px;
+    margin: auto;
+}
+
 .flag{
     width: 30px;
+}
+
+.show {
+  margin: 3rem 0px;
+  position: relative;
+  text-align: center;
+  min-width: 342px;
+  max-width: 342px;
+  max-height: 513px;
+  overflow-y: hidden;
+
+  .show_data {
+    min-width: 342px;
+    max-width: 342px;
+    position: absolute;
+    left: 15%;
+  }
 }

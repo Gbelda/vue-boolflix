@@ -1,6 +1,6 @@
 <template>
-  <div class="col-3 movie">
-    <div class="movie_data">
+  <div class="col-3 show">
+    <div class="show_data">
       <h2>{{ title }}</h2>
       <h4>{{ original_title }}</h4>
       <h4>
@@ -10,7 +10,7 @@
         />
         {{ language }}
       </h4>
-      <h4>vote average : {{ this.transformVote }}</h4>
+      <h4>vote: {{ this.transformVote }}</h4>
     </div>
     <div class="poster">
       <img :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`" alt="" />
@@ -47,15 +47,4 @@ export default {
 </script>
 
 <style lang="scss">
-.movie {
-  padding: 2rem 0px;
-  position: relative;
-  text-align: center;
-  width: 342px;
-
-  .movie_data {
-    width: 100%;
-    position: absolute;
-  }
-}
 </style>
