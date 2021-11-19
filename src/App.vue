@@ -19,6 +19,7 @@ export default {
   name: "App",
   data() {
     return {
+      allResults: [],
       query: "A",
       movies: [],
       shows: [],
@@ -39,17 +40,23 @@ export default {
     callShowsAPI(text) {
       let callMovie = axios.get(this.moviesURI + text);
       let callShows = axios.get(this.showsURI + text);
-      axios.all([callMovie, callShows]).then(
-        axios.spread((...responses) => {
-          this.movies = responses[0].data.results;
-          this.shows = responses[1].data.results;
-        })
-      );
-      this.getLanguage(this.movies);
-      this.getLanguage(this.shows);
+      axios
+        .all([callMovie, callShows])
+        .then(
+          axios.spread((...responses) => {
+            this.movies = responses[0].data.results;
+            this.shows = responses[1].data.results;
+            this.allResults = [...this.movies, ...this.shows];
+            this.getLanguage(this.allResults);
+          })
+        )
+
+        .catch((errors) => {
+          alert(errors);
+        });
     },
     getShows(text) {
-      if (text.length > 0 && this.movies !== 0) {
+      if (text.length > 0) {
         this.language = [];
         this.callShowsAPI(text);
         this.noMovie = false;
