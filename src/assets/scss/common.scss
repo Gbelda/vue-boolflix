@@ -20,12 +20,12 @@
   text-align: center;
   max-height: 513px;
   overflow-y: hidden;
-  width: 342px;
+  max-width: 300px;
   overflow-x: hidden;
   
   .poster{
-      position: relative;
-    width: 342px;
+    position: relative;
+    width: 300px;
     margin: auto;
      &:hover{
          .show_data{
@@ -33,22 +33,29 @@
          }
      }
 
+     .poster_img{
+        height: 450px;
+        width: 300px;
+     }
+
      .show_data {
-         border: 2px solid gray;
-    height: 513px;
-    width: 345px;
-    top: 0%;
-    position: absolute;
-    color: white;
-    visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.884);
+        border: 2px solid gray;
+        height: 450px;
+        width: 300px;
+        top: 0%;
+        position: absolute;
+        color: white;
+        visibility: hidden;
+        background-color: rgba(0, 0, 0, 0.884);
+        
         &:hover{
             visibility: visible;
         }
-    .star {
-    justify-content: center;
-    }
 
-  }
+        .star {
+        justify-content: center;
+        }
+
+    }
   }
 }

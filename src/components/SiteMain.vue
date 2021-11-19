@@ -60,10 +60,9 @@ main {
   background-color: rgb(44, 44, 44);
   padding-top: 50px;
   .section {
-    text-align: center;
-    padding: 5rem;
+    padding-top: 5rem;
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .no_movie {
     h1 {
