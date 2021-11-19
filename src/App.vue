@@ -6,7 +6,6 @@
       :movies="this.movies"
       :error="this.error"
       :noMovie="this.noMovie"
-      :languagesArray="this.language"
     />
   </div>
 </template>
@@ -46,9 +45,11 @@ export default {
           this.shows = responses[1].data.results;
         })
       );
+      this.getLanguage(this.movies);
+      this.getLanguage(this.shows);
     },
     getShows(text) {
-      if (text.length > 0) {
+      if (text.length > 0 && this.movies !== 0) {
         this.language = [];
         this.callShowsAPI(text);
         this.noMovie = false;
@@ -59,20 +60,17 @@ export default {
         this.noMovie = true;
       }
     },
-  },
-  mounted() {
-    this.callShowsAPI(this.query);
-  },
-  computed: {
     getLanguage(array) {
       let languages = [];
-      let result = languages;
       for (let index = 0; index < array.length; index++) {
         if (!languages.includes(array[index].original_language))
           languages.push(array[index].original_language);
       }
-      return result;
+      this.language = languages;
     },
+  },
+  mounted() {
+    this.callShowsAPI(this.query);
   },
 };
 </script>

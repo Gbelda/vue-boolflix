@@ -13,16 +13,13 @@
 <script>
 export default {
   data() {
-    return {
-      filterLanguage: this.langArray,
-    };
+    return {};
   },
   props: {
     name: String,
     original_name: String,
     language: String,
     vote_avg: Number,
-    langArray: Array,
   },
 };
 </script>
