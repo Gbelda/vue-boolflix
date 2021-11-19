@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row" v-if="!noMovie">
         <h1 class="section">MOVIES</h1>
         <movie

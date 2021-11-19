@@ -13,7 +13,7 @@
       <h4>vote average : {{ this.transformVote }}</h4>
     </div>
     <div class="poster">
-      <img :src="`https://image.tmdb.org/t/p/w185//${this.imgURL}`" alt="" />
+      <img :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`" alt="" />
     </div>
   </div>
 </template>
@@ -49,8 +49,10 @@ export default {
 <style lang="scss">
 .tv_show {
   padding: 2rem 0px;
+  text-align: center;
   .show_data {
-    max-width: 184px;
+    max-width: 342px;
+    margin: auto;
   }
 }
 </style>

@@ -13,7 +13,7 @@
       <h4>vote average : {{ this.transformVote }}</h4>
     </div>
     <div class="poster">
-      <img :src="`https://image.tmdb.org/t/p/w185//${this.imgURL}`" alt="" />
+      <img :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`" alt="" />
     </div>
   </div>
 </template>
@@ -50,9 +50,12 @@ export default {
 .movie {
   padding: 2rem 0px;
   position: relative;
+  text-align: center;
+  width: 342px;
 
   .movie_data {
-    max-width: 184px;
+    width: 100%;
+    position: absolute;
   }
 }
 </style>
