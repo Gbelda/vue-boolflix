@@ -10,7 +10,7 @@
         />
         {{ language }}
       </h4>
-      <h4>vote average : {{ vote_avg }}</h4>
+      <h4>vote average : {{ this.transformVote }}</h4>
     </div>
     <div class="poster">
       <img :src="`https://image.tmdb.org/t/p/w185//${this.imgURL}`" alt="" />
@@ -38,6 +38,9 @@ export default {
       } else {
         return this.language;
       }
+    },
+    transformVote() {
+      return Math.ceil(this.vote_avg / 2);
     },
   },
 };
