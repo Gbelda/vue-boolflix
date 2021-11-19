@@ -1,15 +1,20 @@
 <template>
   <div class="col-3 movie">
-    <h2>{{ title }}</h2>
-    <h4>{{ original_title }}</h4>
-    <h4>
-      <img
-        :src="require(`../assets/flags/${transformLanguage}.svg`)"
-        class="flag"
-      />
-      {{ language }}
-    </h4>
-    <h4>vote average : {{ vote_avg }}</h4>
+    <div class="movie_data">
+      <h2>{{ title }}</h2>
+      <h4>{{ original_title }}</h4>
+      <h4>
+        <img
+          :src="require(`../assets/flags/${transformLanguage}.svg`)"
+          class="flag"
+        />
+        {{ language }}
+      </h4>
+      <h4>vote average : {{ vote_avg }}</h4>
+    </div>
+    <div class="poster">
+      <img :src="`https://image.tmdb.org/t/p/w185//${this.imgURL}`" alt="" />
+    </div>
   </div>
 </template>
 
@@ -24,6 +29,7 @@ export default {
     language: String,
     vote_avg: Number,
     langArray: Array,
+    imgURL: String,
   },
   computed: {
     transformLanguage() {
@@ -40,5 +46,10 @@ export default {
 <style lang="scss">
 .movie {
   padding: 2rem 0px;
+  position: relative;
+
+  .movie_data {
+    max-width: 184px;
+  }
 }
 </style>
