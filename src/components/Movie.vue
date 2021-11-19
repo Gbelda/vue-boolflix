@@ -3,7 +3,10 @@
     <h2>{{ title }}</h2>
     <h4>{{ original_title }}</h4>
     <h4>
-      <img :src="require(`../assets/flags/${language}.svg`)" class="flag" />
+      <img
+        :src="require(`../assets/flags/${transformLanguage}.svg`)"
+        class="flag"
+      />
       {{ language }}
     </h4>
     <h4>vote average : {{ vote_avg }}</h4>
@@ -20,6 +23,16 @@ export default {
     original_title: String,
     language: String,
     vote_avg: Number,
+    langArray: Array,
+  },
+  computed: {
+    transformLanguage() {
+      if (!this.langArray.includes(this.language)) {
+        return "xx";
+      } else {
+        return this.language;
+      }
+    },
   },
 };
 </script>

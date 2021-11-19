@@ -6,6 +6,7 @@
       :movies="this.movies"
       :error="this.error"
       :noMovie="this.noMovie"
+      :languagesArray="this.languages"
     />
   </div>
 </template>
@@ -23,7 +24,7 @@ export default {
       query: "A",
       movies: [],
       shows: [],
-      language: [],
+      languages: [],
       error: "",
       noMovie: false,
       moviesURI:
@@ -68,12 +69,12 @@ export default {
       }
     },
     getLanguage(array) {
-      let languages = [];
+      let filterLanguages = [];
       for (let index = 0; index < array.length; index++) {
-        if (!languages.includes(array[index].original_language))
-          languages.push(array[index].original_language);
+        if (!filterLanguages.includes(array[index].original_language))
+          filterLanguages.push(array[index].original_language);
       }
-      this.language = languages;
+      this.languages = filterLanguages;
     },
   },
   mounted() {
