@@ -8,11 +8,11 @@
         type="text"
         name="search"
         id="search_input"
-        placeholder="Movie Title"
+        placeholder="Search a Title"
         v-model="searchString"
         @keyup.enter="$emit('search', searchString)"
       />
-      <button>Search</button>
+      <button @click="$emit('submit-search', searchString)">Search</button>
     </div>
   </header>
 </template>

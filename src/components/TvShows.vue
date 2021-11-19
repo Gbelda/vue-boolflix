@@ -2,7 +2,10 @@
   <div class="col-3 tv_show">
     <h2>{{ name }}</h2>
     <h4>{{ original_name }}</h4>
-    <img :src="require(`../assets/flags/${language}.svg`)" />
+    <h4>
+      <img :src="require(`../assets/flags/${language}.svg`)" class="flag" />
+      {{ language }}
+    </h4>
     <h4>vote average : {{ vote_avg }}</h4>
   </div>
 </template>
@@ -10,13 +13,16 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      filterLanguage: this.langArray,
+    };
   },
   props: {
     name: String,
     original_name: String,
     language: String,
     vote_avg: Number,
+    langArray: Array,
   },
 };
 </script>

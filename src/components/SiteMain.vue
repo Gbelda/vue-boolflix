@@ -10,6 +10,7 @@
           :original_title="movie.original_title"
           :language="movie.original_language"
           :vote_avg="movie.vote_average"
+          :langArray="languages"
         />
         <h1 class="section">TV SHOWS</h1>
         <tv-shows
@@ -19,6 +20,7 @@
           :original_name="show.original_name"
           :language="show.original_language"
           :vote_avg="show.vote_average"
+          :langArray="languages"
         />
       </div>
       <div class="no_movie" v-else>
@@ -37,13 +39,16 @@ export default {
     movies: Array,
     error: String,
     noMovie: Boolean,
+    languagesArray: Array,
   },
   components: {
     Movie,
     TvShows,
   },
   data() {
-    return {};
+    return {
+      languages: this.languagesArray,
+    };
   },
 };
 </script>

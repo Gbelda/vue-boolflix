@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <site-header @search="getShows" />
+    <site-header @search="getShows" @submit-search="getShows" />
     <site-main
       :shows="this.shows"
       :movies="this.movies"
       :error="this.error"
       :noMovie="this.noMovie"
+      :languagesArray="this.language"
     />
   </div>
 </template>
@@ -20,10 +21,15 @@ export default {
   data() {
     return {
       query: "A",
-      shows: [],
       movies: [],
+      shows: [],
+      language: [],
       error: "",
       noMovie: false,
+      moviesURI:
+        "https://api.themoviedb.org/3/search/movie?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=",
+      showsURI:
+        "https://api.themoviedb.org/3/search/tv?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=",
     };
   },
   components: {
@@ -31,36 +37,20 @@ export default {
     SiteMain,
   },
   methods: {
-    callMoviesAPI(text) {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=" +
-            text
-        )
-        .then((response) => {
-          this.movies = response.data.results;
+    callShowsAPI(text) {
+      let callMovie = axios.get(this.moviesURI + text);
+      let callShows = axios.get(this.showsURI + text);
+      axios.all([callMovie, callShows]).then(
+        axios.spread((...responses) => {
+          this.movies = responses[0].data.results;
+          this.shows = responses[1].data.results;
         })
-        .catch((error) => {
-          alert(error);
-        });
-    },
-    callTvShowsAPI(text) {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/search/tv?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it&include_adult=false&query=" +
-            text
-        )
-        .then((response) => {
-          this.shows = response.data.results;
-        })
-        .catch((error) => {
-          alert(error);
-        });
+      );
     },
     getShows(text) {
       if (text.length > 0) {
-        this.callMoviesAPI(text);
-        this.callTvShowsAPI(text);
+        this.language = [];
+        this.callShowsAPI(text);
         this.noMovie = false;
       } else {
         this.shows = [];
@@ -71,8 +61,18 @@ export default {
     },
   },
   mounted() {
-    this.callMoviesAPI(this.query);
-    this.callTvShowsAPI(this.query);
+    this.callShowsAPI(this.query);
+  },
+  computed: {
+    getLanguage(array) {
+      let languages = [];
+      let result = languages;
+      for (let index = 0; index < array.length; index++) {
+        if (!languages.includes(array[index].original_language))
+          languages.push(array[index].original_language);
+      }
+      return result;
+    },
   },
 };
 </script>
