@@ -17,33 +17,38 @@
 /*************************************CARD STYLING******************************************/
 .show {
   margin: 3rem 0px;
-  position: relative;
   text-align: center;
   max-height: 513px;
   overflow-y: hidden;
   width: 342px;
+  overflow-x: hidden;
+  
+  .poster{
+      position: relative;
+    width: 342px;
+    margin: auto;
+     &:hover{
+         .show_data{
+             visibility: visible;
+         }
+     }
 
-  .show_data {
+     .show_data {
+         border: 2px solid gray;
     height: 513px;
-    min-width: 360px;
-    max-width: 360px;
-    position: absolute;
-    left: 15%;
+    width: 345px;
     top: 0%;
+    position: absolute;
     color: white;
     visibility: hidden;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.884);
         &:hover{
             visibility: visible;
         }
+    .star {
+    justify-content: center;
+    }
 
   }
-  .poster{
-    min-width: 319px;
-    max-width: 319px;
-    margin: auto;
-     &:hover ~ .show_data{
-         visibility: visible;
-     }
   }
 }

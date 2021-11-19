@@ -1,25 +1,36 @@
 <template>
-  <div class="col-3 show">
+  <div class="col-12 col-md-6 col-lg-4 col-xl-3 show">
     <div class="poster">
       <img :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`" alt="" />
-    </div>
-    <div class="show_data">
-      <h2>{{ title }}</h2>
-      <h4>{{ original_title }}</h4>
-      <h4>
-        <img
-          :src="require(`../assets/flags/${transformLanguage}.svg`)"
-          class="flag"
+      <div class="show_data col-12">
+        <h2>{{ title }}</h2>
+        <h4>{{ original_title }}</h4>
+        <h4>
+          <img
+            :src="require(`../assets/flags/${transformLanguage}.svg`)"
+            class="flag"
+          />
+          {{ language }}
+        </h4>
+        <h4>Rating:</h4>
+        <star-rating
+          class="star"
+          :star-size="20"
+          :read-only="true"
+          :rating="this.transformVote"
+          :show-rating="false"
         />
-        {{ language }}
-      </h4>
-      <h4>vote: {{ this.transformVote }}</h4>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import StarRating from "../../node_modules/vue-star-rating/src/star-rating.vue";
 export default {
+  components: {
+    StarRating,
+  },
   data() {
     return {};
   },
