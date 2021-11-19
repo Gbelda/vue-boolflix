@@ -54,15 +54,20 @@ export default {
 </script>
 
 <style lang="scss">
-.section {
-  text-align: center;
-  padding: 5rem;
-}
-.no_movie {
-  h1 {
-    padding-top: 10rem;
-    color: red;
+main {
+  background-color: rgb(44, 44, 44);
+  .section {
     text-align: center;
+    padding: 5rem;
+    color: white;
+    font-size: 4rem;
+  }
+  .no_movie {
+    h1 {
+      padding-top: 10rem;
+      color: red;
+      text-align: center;
+    }
   }
 }
 </style>

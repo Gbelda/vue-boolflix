@@ -1,5 +1,8 @@
 <template>
   <div class="col-3 show">
+    <div class="poster">
+      <img :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`" alt="" />
+    </div>
     <div class="show_data">
       <h2>{{ name }}</h2>
       <h4>{{ original_name }}</h4>
@@ -11,9 +14,6 @@
         {{ language }}
       </h4>
       <h4>vote: {{ this.transformVote }}</h4>
-    </div>
-    <div class="poster">
-      <img :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`" alt="" />
     </div>
   </div>
 </template>

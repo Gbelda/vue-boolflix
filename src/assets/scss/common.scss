@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-main{
+.container-fluid{
     max-width: 1920px;
     margin: auto;
 }
@@ -13,6 +13,8 @@ main{
     width: 30px;
 }
 
+
+/*************************************CARD STYLING******************************************/
 .show {
   margin: 3rem 0px;
   position: relative;
