@@ -24,6 +24,7 @@
           :rating="this.transformVote"
           :show-rating="false"
         />
+        <cast-list :showId="showId" />
       </div>
     </div>
   </div>
@@ -31,14 +32,19 @@
 
 <script>
 import StarRating from "../../node_modules/vue-star-rating/src/star-rating.vue";
+import CastList from "./CastList.vue";
 export default {
   components: {
     StarRating,
+    CastList,
   },
   data() {
-    return {};
+    return {
+      isSelected: false,
+    };
   },
   props: {
+    showId: Number,
     name: String,
     original_name: String,
     language: String,

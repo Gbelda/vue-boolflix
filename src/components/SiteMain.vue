@@ -12,6 +12,7 @@
           :vote_avg="movie.vote_average"
           :imgURL="movie.poster_path"
           :langArray="languagesArray"
+          :movieId="movie.id"
         />
         <h1 class="section">TV SHOWS</h1>
         <tv-shows
@@ -23,6 +24,7 @@
           :vote_avg="show.vote_average"
           :imgURL="show.poster_path"
           :langArray="languagesArray"
+          :showId="show.id"
         />
       </div>
       <div class="no_movie" v-else>
@@ -48,15 +50,14 @@ export default {
     TvShows,
   },
   data() {
-    return {
-      ratings: [1, 2, 3, 4, 5],
-    };
+    return {};
   },
 };
 </script>
 
 <style lang="scss">
 main {
+  min-height: 100vh;
   background-color: rgb(44, 44, 44);
   padding-top: 50px;
   .section {

@@ -6,7 +6,7 @@
         alt=""
         class="poster_img"
       />
-      <div class="show_data col-12">
+      <div class="show_data col-12" @mouseleave="clearList()">
         <h2>{{ title }}</h2>
         <h4>{{ original_title }}</h4>
         <h4>
@@ -24,6 +24,7 @@
           :rating="this.transformVote"
           :show-rating="false"
         />
+        <cast-list :movieId="movieId" />
       </div>
     </div>
   </div>
@@ -31,14 +32,19 @@
 
 <script>
 import StarRating from "../../node_modules/vue-star-rating/src/star-rating.vue";
+import CastList from "./CastList.vue";
 export default {
   components: {
     StarRating,
+    CastList,
   },
   data() {
-    return {};
+    return {
+      isSelected: false,
+    };
   },
   props: {
+    movieId: Number,
     title: String,
     original_title: String,
     language: String,
@@ -56,6 +62,11 @@ export default {
     },
     transformVote() {
       return Math.ceil(this.vote_avg / 2);
+    },
+  },
+  methods: {
+    clearList() {
+      this.isSelected = false;
     },
   },
 };
