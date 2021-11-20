@@ -24,7 +24,6 @@
           :vote_avg="show.vote_average"
           :imgURL="show.poster_path"
           :langArray="languagesArray"
-          :showId="show.id"
         />
       </div>
       <div class="no_movie" v-else>
