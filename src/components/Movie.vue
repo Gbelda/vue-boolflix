@@ -1,12 +1,8 @@
 <template>
   <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 show">
     <div class="poster">
-      <img
-        :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`"
-        alt=""
-        class="poster_img"
-      />
-      <div class="show_data col-12" @mouseleave="clearList()">
+      <img :src="this.getPoster" alt="" class="poster_img" />
+      <div class="show_data col-12">
         <h2>{{ title }}</h2>
         <h4>{{ original_title }}</h4>
         <h4>
@@ -24,7 +20,7 @@
           :rating="this.transformVote"
           :show-rating="false"
         />
-        <cast-list :movieId="movieId" />
+        <cast-list :showId="showId" />
       </div>
     </div>
   </div>
@@ -44,7 +40,7 @@ export default {
     };
   },
   props: {
-    movieId: Number,
+    showId: Number,
     title: String,
     original_title: String,
     language: String,
@@ -62,6 +58,11 @@ export default {
     },
     transformVote() {
       return Math.ceil(this.vote_avg / 2);
+    },
+    getPoster() {
+      return this.imgURL == null
+        ? require("../assets/question.jpg")
+        : `https://image.tmdb.org/t/p/w342//${this.imgURL}`;
     },
   },
   methods: {

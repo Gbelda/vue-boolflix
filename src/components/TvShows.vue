@@ -1,11 +1,7 @@
 <template>
   <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 show">
     <div class="poster">
-      <img
-        :src="`https://image.tmdb.org/t/p/w342//${this.imgURL}`"
-        alt=""
-        class="poster_img"
-      />
+      <img :src="this.getPoster" alt="" class="poster_img" />
       <div class="show_data">
         <h2>{{ name }}</h2>
         <h4>{{ original_name }}</h4>
@@ -60,6 +56,11 @@ export default {
     },
     transformVote() {
       return Math.ceil(this.vote_avg / 2);
+    },
+    getPoster() {
+      return this.imgURL == null
+        ? require("../assets/question.jpg")
+        : `https://image.tmdb.org/t/p/w342//${this.imgURL}`;
     },
   },
 };

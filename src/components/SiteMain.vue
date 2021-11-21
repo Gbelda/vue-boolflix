@@ -12,7 +12,7 @@
           :vote_avg="movie.vote_average"
           :imgURL="movie.poster_path"
           :langArray="languagesArray"
-          :movieId="movie.id"
+          :showId="movie.id"
         />
         <h1 class="section">TV SHOWS</h1>
         <tv-shows
@@ -24,6 +24,7 @@
           :vote_avg="show.vote_average"
           :imgURL="show.poster_path"
           :langArray="languagesArray"
+          :showId="show.id"
         />
       </div>
       <div class="no_movie" v-else>

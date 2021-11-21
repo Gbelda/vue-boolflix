@@ -21,7 +21,7 @@ export default {
     };
   },
   props: {
-    movieId: Number,
+    showId: Number,
     clearList: [],
   },
   methods: {
@@ -42,7 +42,7 @@ export default {
   mounted() {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${this.movieId}/credits?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it`
+        `https://api.themoviedb.org/3/movie/${this.showId}/credits?api_key=a0f48b175c1403d06b6b5b6c03c79b28&language=it`
       )
       .then((response) => {
         this.allCast = response.data.cast;
