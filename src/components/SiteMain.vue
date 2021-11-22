@@ -15,6 +15,9 @@
           :showId="movie.id"
           :isMovie="isMovie"
         />
+        <div class="empty" v-show="this.movies.length == 0">
+          <h4>No movies matches the criteria...</h4>
+        </div>
         <h1 class="section">TV SHOWS</h1>
         <show
           v-for="show in shows"
@@ -28,6 +31,9 @@
           :showId="show.id"
           :isMovie="notSeries"
         />
+        <div class="empty" v-show="this.shows.length == 0">
+          <h4>No shows matches the criteria...</h4>
+        </div>
       </div>
       <div class="no_movie" v-else>
         <h1>{{ error }}</h1>
@@ -54,6 +60,7 @@ export default {
     return {
       isMovie: true,
       notSeries: false,
+      noShow: false,
     };
   },
 };
@@ -75,6 +82,10 @@ main {
       color: red;
       text-align: center;
     }
+  }
+  .empty {
+    color: red;
+    text-align: center;
   }
 }
 </style>
