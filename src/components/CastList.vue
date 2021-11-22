@@ -1,12 +1,12 @@
 <template>
   <div class="cast_list">
-    <h6 class="api_link" @click="generateCastList()">See casts..</h6>
-    <ul class="casts" v-if="allCast != []">
+    <h6 class="api_link" @click="printCast()">See casts..</h6>
+    <ul class="casts">
       <li v-for="cast in castList" :key="cast.id">
         {{ cast.name }} as {{ cast.character }}
       </li>
     </ul>
-    <h6 v-else>There is no cast list...</h6>
+    <h6 v-show="noCast">There is no cast list...</h6>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
       allCast: [],
       isShowing: false,
       castURI: "",
+      noCast: false,
     };
   },
   props: {
@@ -40,7 +41,22 @@ export default {
         this.isShowing = false;
       }
     },
-    isCastKnown() {},
+    unknownCast() {
+      if (this.isShowing == false) {
+        this.noCast = true;
+        this.isShowing = true;
+      } else {
+        this.isShowing = false;
+        this.noCast = false;
+      }
+    },
+    printCast() {
+      if (this.allCast != "") {
+        this.generateCastList();
+      } else {
+        this.unknownCast();
+      }
+    },
   },
   mounted() {
     axios.get(this.getCast).then((response) => {
@@ -58,7 +74,13 @@ export default {
 </script>
 
 <style  lang='scss'>
-.casts {
-  padding: 0;
+.cast_list {
+  .casts {
+    padding: 0;
+  }
+  .api_link {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 </style>
