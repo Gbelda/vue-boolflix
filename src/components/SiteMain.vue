@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row" v-if="!noMovie">
         <h1 class="section">MOVIES</h1>
-        <movie
+        <show
           v-for="movie in movies"
           :key="movie.id"
           :title="movie.title"
@@ -13,18 +13,20 @@
           :imgURL="movie.poster_path"
           :langArray="languagesArray"
           :showId="movie.id"
+          :isMovie="isMovie"
         />
         <h1 class="section">TV SHOWS</h1>
-        <tv-shows
+        <show
           v-for="show in shows"
           :key="show.id"
-          :name="show.name"
-          :original_name="show.original_name"
+          :title="show.name"
+          :original_title="show.original_name"
           :language="show.original_language"
           :vote_avg="show.vote_average"
           :imgURL="show.poster_path"
           :langArray="languagesArray"
           :showId="show.id"
+          :isMovie="notSeries"
         />
       </div>
       <div class="no_movie" v-else>
@@ -35,8 +37,8 @@
 </template>
 
 <script>
-import Movie from "./Movie.vue";
-import TvShows from "./TvShows.vue";
+import Show from "./Show.vue";
+
 export default {
   props: {
     shows: Array,
@@ -46,11 +48,13 @@ export default {
     languagesArray: Array,
   },
   components: {
-    Movie,
-    TvShows,
+    Show,
   },
   data() {
-    return {};
+    return {
+      isMovie: true,
+      notSeries: false,
+    };
   },
 };
 </script>

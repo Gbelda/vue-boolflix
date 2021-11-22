@@ -2,9 +2,9 @@
   <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 show">
     <div class="poster">
       <img :src="this.getPoster" alt="" class="poster_img" />
-      <div class="show_data">
-        <h2>{{ name }}</h2>
-        <h4>{{ original_name }}</h4>
+      <div class="show_data col-12">
+        <h2>{{ title }}</h2>
+        <h4>{{ original_title }}</h4>
         <h4>
           <img
             :src="require(`../assets/flags/${transformLanguage}.svg`)"
@@ -20,6 +20,7 @@
           :rating="this.transformVote"
           :show-rating="false"
         />
+        <cast-list :showId="showId" :isMovie="this.isMovie" />
       </div>
     </div>
   </div>
@@ -27,10 +28,11 @@
 
 <script>
 import StarRating from "../../node_modules/vue-star-rating/src/star-rating.vue";
-
+import CastList from "./CastList.vue";
 export default {
   components: {
     StarRating,
+    CastList,
   },
   data() {
     return {
@@ -39,12 +41,13 @@ export default {
   },
   props: {
     showId: Number,
-    name: String,
-    original_name: String,
+    title: String,
+    original_title: String,
     language: String,
     vote_avg: Number,
     langArray: Array,
     imgURL: String,
+    isMovie: Boolean,
   },
   computed: {
     transformLanguage() {
@@ -61,6 +64,11 @@ export default {
       return this.imgURL == null
         ? require("../assets/question.jpg")
         : `https://image.tmdb.org/t/p/w342//${this.imgURL}`;
+    },
+  },
+  methods: {
+    clearList() {
+      this.isSelected = false;
     },
   },
 };
