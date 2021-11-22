@@ -12,14 +12,16 @@
           />
           {{ language }}
         </h4>
-        <h4>Rating:</h4>
-        <star-rating
-          class="star"
-          :star-size="20"
-          :read-only="true"
-          :rating="this.transformVote"
-          :show-rating="false"
-        />
+        <div class="rating">
+          <h4>Rating:</h4>
+          <star-rating
+            class="star"
+            :star-size="20"
+            :read-only="true"
+            :rating="this.transformVote"
+            :show-rating="false"
+          />
+        </div>
         <cast-list :showId="showId" :isMovie="this.isMovie" />
       </div>
     </div>
@@ -66,13 +68,21 @@ export default {
         : `https://image.tmdb.org/t/p/w342//${this.imgURL}`;
     },
   },
-  methods: {
-    clearList() {
-      this.isSelected = false;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss">
+.rating {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  h4 {
+    margin: 0;
+    padding-right: 10px;
+  }
+  .star {
+    padding-bottom: 4px;
+  }
+}
 </style>
