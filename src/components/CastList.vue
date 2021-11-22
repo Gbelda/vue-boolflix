@@ -3,7 +3,7 @@
     <h6 class="api_link" @click="printCast()">See casts..</h6>
     <ul class="casts">
       <li v-for="cast in castList" :key="cast.id">
-        {{ cast.name }} as {{ cast.character }}
+        {{ cast.name }}
       </li>
     </ul>
     <h6 v-show="noCast">There is no cast list...</h6>
@@ -29,12 +29,15 @@ export default {
   },
   methods: {
     generateCastList() {
-      if (this.isShowing == false) {
+      if (this.isShowing == false && this.allCast.length > 5) {
         for (let index = 0; index < 5; index++) {
           if (!this.castList.includes(this.allCast[index])) {
             this.castList.push(this.allCast[index]);
           }
         }
+        this.isShowing = true;
+      } else if (this.isShowing == false && this.allCast.length < 5) {
+        this.castList = this.allCast;
         this.isShowing = true;
       } else {
         this.castList = [];

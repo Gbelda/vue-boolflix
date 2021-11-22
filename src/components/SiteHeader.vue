@@ -42,6 +42,10 @@ header {
   }
   .search_el {
     padding-right: 2rem;
+    button {
+      padding: 1px 10px;
+      border: none;
+    }
   }
 }
 </style>

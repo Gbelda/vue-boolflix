@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <site-header @search="getShows" @submit-search="getShows" />
+    <site-header
+      @search="getShows"
+      @submit-search="getShows"
+      :searchString="searchText"
+    />
     <site-main
       :shows="this.shows"
       :movies="this.movies"
@@ -20,6 +24,7 @@ export default {
   name: "App",
   data() {
     return {
+      searchText: "",
       allResults: [],
       query: "A",
       movies: [],
