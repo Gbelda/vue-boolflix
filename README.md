@@ -1,1 +1,2 @@
-# Movie database website using Vue.Js with API.
+# Movie database website using Vue.Js.
+Movie database with search function.
