@@ -20,6 +20,9 @@
 <script>
 export default {
   components: {},
+  props: {
+    searchText: String,
+  },
   data() {
     return {
       searchString: "",

@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <site-header
-      @search="getShows"
-      @submit-search="getShows"
-      :searchString="searchText"
-    />
+    <site-header @search="getShows" @submit-search="getShows" />
     <site-main
       :shows="this.shows"
       :movies="this.movies"
